@@ -15,7 +15,10 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react"],
+  "plugins": [
+    "@typescript-eslint",
+    "react"
+  ],
   "rules": {
     /* Regras de React */
     "react/react-in-jsx-scope": "off", // Desnecessário no Next.js
@@ -40,7 +43,10 @@
     "no-console": "warn", // Avisar sobre console.log em produção
     "no-debugger": "error", // Evitar debugger
     "no-unused-vars": "off", // Desativar em favor do @typescript-eslint
-    "eqeqeq": ["error", "always"], // Exigir comparações estritas
+    "eqeqeq": [
+      "error",
+      "always"
+    ], // Exigir comparações estritas
     "prefer-const": "warn", // Sugerir uso de const quando aplicável
     "no-var": "error" // Proibir var
   }
