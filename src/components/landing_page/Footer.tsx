@@ -32,7 +32,9 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-slate-800 text-center text-slate-400">
-          <p>&copy 2025 CaminhoDev. Todos os direitos reservados.</p>
+          <p>
+            <span>&copy;</span> 2025 CaminhoDev. Todos os direitos reservados.
+          </p>
         </div>
       </div>
     </footer>
