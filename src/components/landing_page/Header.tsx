@@ -5,7 +5,7 @@ import LogoCaminhoDev from '@/assets/images/caminho_dev_logo.png';
 
 export default function Header() {
   return (
-    <div className="relative py-20 px-4 overflow-hidden bg-gradient-to-r from-slate-900 to-slate-800 text-white">
+    <header className="relative py-20 px-4 overflow-hidden bg-gradient-to-r from-slate-900 to-slate-800 text-white">
       <div className="container mx-auto relative">
         <div className="max-w-3xl mx-auto text-center">
           <div className="flex justify-center items-center">
@@ -53,6 +53,6 @@ export default function Header() {
           <span>Machine Learning</span>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
