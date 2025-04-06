@@ -1,4 +1,4 @@
-import { Feature } from '@/@types/FeatureType';
+import { Feature } from '@/@types/LandingPageTypes/FeatureType';
 import { Card, CardContent } from '../ui/card';
 
 interface FeatureCardProps {
