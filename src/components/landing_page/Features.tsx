@@ -35,7 +35,7 @@ export default function Features() {
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
           Tudo o que você precisa em um só lugar
         </h2>
-        <p className="text-lg text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+        <p className="text-slate-700 text-xl text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
           Supere as barreiras do aprendizado em Ciência da Computação com nossa
           plataforma completa
         </p>
