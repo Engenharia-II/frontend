@@ -17,13 +17,13 @@ export default function Header() {
           <div className="flex flex-row sm:flew-col gap-4 justify-center">
             <Button
               size={'lg'}
-              className="bg-white text-slate-900 hover:bg-slate-300 hover:cursor-pointer px-6"
+              className="bg-white text-slate-900 hover:bg-white/90 hover:cursor-pointer px-6"
             >
               Começar Agora
             </Button>
             <Button
               size={'lg'}
-              className="bg-white text-slate-900 hover:bg-slate-300 hover:cursor-pointer px-6"
+              className="bg-white text-slate-900 hover:bg-white/90 hover:cursor-pointer px-6"
             >
               Como Funciona
             </Button>

@@ -3,25 +3,25 @@ import FeatureCard from './FeatureCard';
 
 const features = [
   {
-    icon: <BookOpen className="h-10 w-10 text-primary" />,
+    icon: <BookOpen className="h-10 w-10" />,
     title: 'Guia de Estudos Estruturado',
     description:
       'Materiais organizados de acordo com o currículo de Ciência da Computação, desde iniciantes até avançados.'
   },
   {
-    icon: <MessageSquare className="h-10 w-10 text-primary" />,
+    icon: <MessageSquare className="h-10 w-10" />,
     title: 'Fórum Colaborativo',
     description:
       'Tire dúvidas, compartilhe conhecimentos e conecte-se com outros estudantes e profissionais.'
   },
   {
-    icon: <Code className="h-10 w-10 text-primary" />,
+    icon: <Code className="h-10 w-10" />,
     title: 'Recursos de Qualidade',
     description:
       'Acesso a tutoriais, artigos, vídeos e exercícios selecionados para cada área de estudo.'
   },
   {
-    icon: <Users className="h-10 w-10 text-primary" />,
+    icon: <Users className="h-10 w-10" />,
     title: 'Comunidade Ativa',
     description:
       'Faça parte de uma comunidade de estudantes e profissionais apaixonados por tecnologia.'
