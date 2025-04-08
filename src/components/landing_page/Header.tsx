@@ -1,17 +1,22 @@
 import Image from 'next/image';
 import { Button } from '../ui/button';
 import { Search } from 'lucide-react';
-import LogoCaminhoDev from '@/assets/images/caminho_dev_logo.png';
 
 export default function Header() {
   return (
-    <header className="relative py-20 px-4 overflow-hidden bg-gradient-to-r from-slate-900 to-slate-800 text-white">
+    <header className="relative pt-5 pb-20 px-4 overflow-hidden bg-gradient-to-r from-slate-900 to-slate-800 text-white">
       <div className="container mx-auto relative">
         <div className="max-w-3xl mx-auto text-center">
           <div className="flex justify-center items-center">
-            <Image src={LogoCaminhoDev} alt="Caminho Dev" />
+            <Image
+              src="/caminho_dev_logo.png"
+              width={200}
+              height={200}
+              quality={100}
+              alt="Caminho Dev"
+            />
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-light">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-light">
             Aprenda Ciência da Computação de forma estruturada
           </h1>
           <div className="flex flex-row sm:flew-col gap-4 justify-center">
