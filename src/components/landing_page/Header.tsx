@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Button } from '../ui/button';
 import { Search } from 'lucide-react';
 import CaminhoDevLogo from '@/../public/assets/logos/caminho_dev_logo.png';
+import Link from 'next/link';
 
 export default function Header() {
   return (
@@ -21,12 +22,14 @@ export default function Header() {
             Aprenda Ciência da Computação de forma estruturada
           </h1>
           <div className="flex flex-row sm:flew-col gap-4 justify-center">
-            <Button
-              size={'lg'}
-              className="bg-white text-slate-900 hover:bg-white/90 hover:cursor-pointer px-6"
-            >
-              Começar Agora
-            </Button>
+            <Link href={'/auth'}>
+              <Button
+                size={'lg'}
+                className="bg-white text-slate-900 w-full hover:bg-white/90 hover:cursor-pointer px-6"
+              >
+                Começar Agora
+              </Button>
+            </Link>
             <Button
               size={'lg'}
               className="bg-white text-slate-900 hover:bg-white/90 hover:cursor-pointer px-6"
