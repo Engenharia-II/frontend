@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Button } from '../ui/button';
 import { Search } from 'lucide-react';
+import CaminhoDevLogo from '@/../public/assets/logos/caminho_dev_logo.png';
 
 export default function Header() {
   return (
@@ -9,7 +10,7 @@ export default function Header() {
         <div className="max-w-3xl mx-auto text-center">
           <div className="flex justify-center items-center">
             <Image
-              src="/caminho_dev_logo.png"
+              src={CaminhoDevLogo}
               width={200}
               height={200}
               quality={100}
