@@ -26,16 +26,16 @@ export default function AuthLayout() {
     <div className="flex flex-col items-center justify-center bg-white border-none rounded-lg">
       <div className="flex items-center justify-center bg-slate-100 p-2 border-none rounded-t-lg w-full">
         <button
-          className={`px-16 py-2 rounded-lg cursor-pointer ${isLogin ? 'bg-white font-bold text-black' : 'bg-slate-100 text-gray-700'}`}
+          className={`px-16 py-1 rounded-lg cursor-pointer ${isLogin ? 'bg-white text-black font-semibold' : 'bg-slate-100 text-gray-500'}`}
           onClick={handleLoginToggle}
         >
-          Login
+          Entrar
         </button>
         <button
-          className={`px-16 py-2 rounded-lg cursor-pointer ${isRegister ? 'bg-white font-bold text-black' : 'bg-slate-100 text-gray-700'}`}
+          className={`px-16 py-1 rounded-lg cursor-pointer ${isRegister ? 'bg-white text-black font-semibold' : 'bg-slate-100 text-gray-500'}`}
           onClick={handleRegisterToggle}
         >
-          Register
+          Cadastrar
         </button>
       </div>
       {isLogin ? <LoginForm /> : <RegisterForm />}
