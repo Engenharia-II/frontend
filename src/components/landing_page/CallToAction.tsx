@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Button } from '../ui/button';
 
 export default function CallToAction() {
@@ -12,12 +13,14 @@ export default function CallToAction() {
           plataforma para dominar a Ciência da Computação
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            className="bg-white text-black hover:bg-white/90 hover:cursor-pointer"
-          >
-            Começar Agora
-          </Button>
+          <Link href={'/auth'}>
+            <Button
+              size={'lg'}
+              className="bg-white text-slate-900 w-full hover:bg-white/90 hover:cursor-pointer px-6"
+            >
+              Começar Agora
+            </Button>
+          </Link>
           <Button
             size="lg"
             className="bg-white text-black hover:bg-white/90 hover:cursor-pointer"

@@ -31,6 +31,7 @@ export default function AuthLayout() {
         <Image
           src={CaminhoDevLogo}
           alt="Caminho Dev Logo"
+          priority={true}
           width={100}
           height={100}
         />
