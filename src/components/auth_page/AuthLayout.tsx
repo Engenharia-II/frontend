@@ -6,6 +6,7 @@ import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import CaminhoDevLogo from '@/../public/assets/logos/caminho_dev_logo.png';
 import Link from 'next/link';
+import Footer from './Footer';
 
 export default function AuthLayout() {
   const [isLogin, setIsLogin] = useState(true);
@@ -61,6 +62,7 @@ export default function AuthLayout() {
         </div>
         {isLogin ? <LoginForm /> : <RegisterForm />}
       </div>
+      <Footer />
     </>
   );
 }
