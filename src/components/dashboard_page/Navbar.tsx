@@ -21,11 +21,11 @@ export default function Navbar() {
   }
 
   return (
-    <div className="flex items-center justify-between mx-18">
+    <div className="flex flex-col md:flex-row items-center justify-between mx-18">
       <Link href={'/dashboard'}>
         <h1 className="text-xl font-bold">CaminhoDev</h1>
       </Link>
-      <div className="flex items-center justify-center gap-3">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-3">
         <div className="relative flex items-center justify-center">
           <div
             className={`absolute right-12 top-1/2 -translate-y-1/2 bg-white ${
