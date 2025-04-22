@@ -16,6 +16,9 @@ const inProgressCourses = [
 ];
 
 export default function ProgressTracker() {
+  // Isso é patético, mas não sei como fazer isso de outra forma
+  // e não quero perder tempo com isso agora
+  // O ideal seria fazer isso com um useEffect e um useState mas FODASE
   let progresses = 0;
   for (let i = 0; i < inProgressCourses.length; i++) {
     progresses += inProgressCourses[i].progress;
