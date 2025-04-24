@@ -9,24 +9,24 @@ export default function StatsSection() {
         icon={<IoBookOutline />}
         label="Disciplinas em andamento"
         value={3}
-        color="blue-500"
-        bgColor="blue-200"
+        color="text-blue-500"
+        bgColor="bg-blue-200"
       />
 
       <StatCard
         icon={<VscMortarBoard />}
         label="Tópicos concluídos"
         value={12}
-        color="green-500"
-        bgColor="green-200"
+        color="text-green-500"
+        bgColor="bg-green-200"
       />
 
       <StatCard
         icon={<IoBookmarksOutline />}
         label="Recursos salvos"
         value={24}
-        color="purple-500"
-        bgColor="purple-200"
+        color="text-purple-500"
+        bgColor="bg-purple-200"
       />
     </div>
   );

@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import clsx from 'clsx';
 
 interface StatCardProps {
   icon: ReactNode;
@@ -19,7 +20,11 @@ export default function StatCard({
     <div className="bg-white shadow-slate-200 border-slate-200 border w-full overflow-hidden pl-7 pr-3 py-[25px] rounded-lg border-solid max-md:px-5">
       <div className="flex max-md:flex-col max-md:items-stretch">
         <div
-          className={`flex items-center justify-center text-2xl p-4 rounded-4xl text-${color} font-bold bg-${bgColor}`}
+          className={clsx(
+            'flex items-center justify-center text-2xl p-4 rounded-4xl font-bold',
+            color,
+            bgColor
+          )}
         >
           {icon}
         </div>
