@@ -26,7 +26,7 @@ export default function ProgressTracker() {
   progresses /= inProgressCourses.length;
 
   return (
-    <section className="w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <section className="w-full">
       <Card className="border-gray-200 lg:col-span-2">
         <CardHeader className="flex items-center justify-between">
           <CardTitle className="text-xl">Seu progresso</CardTitle>

@@ -4,7 +4,7 @@ import StatCard from './StatCard';
 
 export default function StatsSection() {
   return (
-    <div className="min-w-60 min-h-[354px] grow shrink w-[329px]">
+    <div className="grid grid-cols-1 gap-4">
       <StatCard
         icon={<IoBookOutline />}
         label="Disciplinas em andamento"
