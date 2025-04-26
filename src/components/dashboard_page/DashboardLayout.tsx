@@ -91,9 +91,9 @@ export function DashboardLayout() {
         <section className="">
           <ActivityList activities={activities} />
         </section>
-        <search>
+        <section>
           <TopicList topics={topics} />
-        </search>
+        </section>
       </main>
       <Footer />
     </div>
