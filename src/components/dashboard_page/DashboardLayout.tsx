@@ -6,6 +6,7 @@ import Header from './Header';
 import ProgressTracker from './ProgressTracker';
 import StatsSection from './StatsSection';
 import Footer from './Footer';
+import TopicList from './TopicList';
 
 const activities = [
   {
@@ -31,6 +32,49 @@ const activities = [
   }
 ];
 
+const topics = [
+  {
+    icon: 'https://cdn.builder.io/api/v1/image/assets/491acbbbf9904ef49b9d97c38185559a/62ce7d562dc89ad97247bef0d1a112840cba4eb6?placeholderIfAbsent=true',
+    title: 'Árvores de Busca Binária',
+    category: 'Algoritmos e Estruturas de Dados',
+    resourceCount: 8,
+    link: '/topics/trees',
+    type: 'Vídeo' as const
+  },
+  {
+    icon: 'https://cdn.builder.io/api/v1/image/assets/491acbbbf9904ef49b9d97c38185559a/d1e1c50522e52badd59df25bc65fdbace265bfff?placeholderIfAbsent=true',
+    title: 'Normalização de Bancos de Dados',
+    category: 'Banco de Dados',
+    resourceCount: 5,
+    link: '/topics/database-normalization',
+    type: 'Artigo' as const
+  },
+  {
+    icon: 'https://cdn.builder.io/api/v1/image/assets/491acbbbf9904ef49b9d97c38185559a/beca6f0a580fab74ae1afd7075f3cc1d1cef4a50?placeholderIfAbsent=true',
+    title: 'Modelo TCP/IP',
+    category: 'Redes de Computadores',
+    resourceCount: 6,
+    link: '/topics/tcp-ip-model',
+    type: 'Vídeo' as const
+  },
+  {
+    icon: 'https://cdn.builder.io/api/v1/image/assets/491acbbbf9904ef49b9d97c38185559a/1301f28ed7fbd158cea8bef19c47c288b7650985?placeholderIfAbsent=true',
+    title: 'Design Patterns em Java',
+    category: 'Programação Orientada a Objetos',
+    resourceCount: 7,
+    link: '/topics/design-patterns-java',
+    type: 'PDF' as const
+  },
+  {
+    icon: 'https://cdn.builder.io/api/v1/image/assets/491acbbbf9904ef49b9d97c38185559a/46c284ccc0d0a6740f53db056edc74447016173b?placeholderIfAbsent=true',
+    title: 'Criptografia Assimétrica',
+    category: 'Segurança da Informação',
+    resourceCount: 4,
+    link: '/topics/asymmetric-cryptography',
+    type: 'Artigo' as const
+  }
+];
+
 export function DashboardLayout() {
   return (
     <div className="min-h-screen bg-slate-50">
@@ -47,6 +91,9 @@ export function DashboardLayout() {
         <section className="">
           <ActivityList activities={activities} />
         </section>
+        <search>
+          <TopicList topics={topics} />
+        </search>
       </main>
       <Footer />
     </div>
