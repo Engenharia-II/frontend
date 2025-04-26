@@ -5,6 +5,7 @@ import ActivityList from './ActivityList';
 import Header from './Header';
 import ProgressTracker from './ProgressTracker';
 import StatsSection from './StatsSection';
+import Footer from './Footer';
 
 const activities = [
   {
@@ -47,6 +48,7 @@ export function DashboardLayout() {
           <ActivityList activities={activities} />
         </section>
       </main>
+      <Footer />
     </div>
   );
 }
