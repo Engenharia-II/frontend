@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 flex flex-col items-stretch justify-center mt-12 py-12 px-8">
-      <div className="flex flex-wrap justify-between w-full text-gray-400">
+    <footer className="bg-gray-900 mt-12 py-12 px-8">
+      <div className="flex flex-col gap-6 md:flex-row justify-between w-full text-gray-400">
         <div>
           <h2 className="text-gray-200 text-xl font-bold mb-4">CaminhoDev</h2>
           <p>Plataforma educacional para estudantes de Ciência</p>
@@ -57,7 +57,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center border-t border-gray-800 leading-loose mt-8 pt-8 text-gray-500 text-lg">
+      <div className="flex justify-center border-t border-gray-800 leading-loose mt-8 pt-8 text-gray-500 text-sm md:text-lg">
         <p>
           &copy; 2025 <span className="font-bold">CaminhoDev</span>. Todos os
           direitos reservados.

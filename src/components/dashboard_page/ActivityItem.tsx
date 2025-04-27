@@ -7,7 +7,7 @@ interface ActivityListProps {
 
 export default function ActivityItem({ activity }: ActivityListProps) {
   return (
-    <div className="flex flex-wrap items-center gap-4 px-4 py-4">
+    <div className="flex items-center gap-4 px-4 py-4">
       <div className={clsx('text-xl p-2', activity.color)}>{activity.icon}</div>
       <div>
         <p className="font-medium">{activity.title}</p>
