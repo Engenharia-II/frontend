@@ -33,11 +33,9 @@ export default function TopicItem({ topic }: TopicItemProps) {
             <h2 className="text-lg text-gray-900 font-semibold">
               {topic.title}
             </h2>
-            <div>
-              <p className="text-gray-600">
-                {topic.category} • {topic.resourceCount} recursos
-              </p>
-            </div>
+            <p className="text-gray-600">
+              {topic.category} • {topic.resourceCount} recursos
+            </p>
           </div>
         </div>
         <div className="flex items-center gap-2">
