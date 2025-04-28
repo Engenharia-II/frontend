@@ -30,7 +30,9 @@ export default function ProgressTracker() {
       <Card className="border-gray-200 lg:col-span-2">
         <CardHeader className="flex items-center justify-between">
           <CardTitle className="text-xl">Seu progresso</CardTitle>
-          <span className="text-sm">{progresses.toFixed(0)}% completo</span>
+          <span className="font-semibold">
+            {progresses.toFixed(0)}% completo
+          </span>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
