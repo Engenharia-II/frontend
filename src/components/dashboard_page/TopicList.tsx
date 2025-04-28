@@ -19,10 +19,10 @@ export default function TopicList({ topics }: TopicListProps) {
         </div>
         <Link
           href={'/topics'}
-          className="flex items-center justify-center bg-white hover:bg-slate-100 border rounded-lg border-slate-300 shadow-slate-200 px-4 py-2 font-semibold"
+          className="flex items-center justify-center bg-white hover:bg-slate-100 border rounded-lg border-slate-300 shadow-slate-200 px-4 py-2 font-semibold group"
         >
           Ver tudo
-          <TiArrowRight className="text-2xl" />
+          <TiArrowRight className="text-2xl group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
       <div className="mt-8 space-y-4">

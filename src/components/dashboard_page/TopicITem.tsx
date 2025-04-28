@@ -24,7 +24,7 @@ export default function TopicItem({ topic }: TopicItemProps) {
   return (
     <Link
       href={topic.link}
-      className="flex flex-col bg-white border border-slate-300 hover:shadow-md transition-shadow rounded-lg p-5"
+      className="flex flex-col bg-white border border-slate-300 hover:shadow-md transition-shadow rounded-lg p-5 group"
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -46,7 +46,7 @@ export default function TopicItem({ topic }: TopicItemProps) {
           >
             {topic.type}
           </p>
-          <TiArrowRight className="text-2xl text-slate-500" />
+          <TiArrowRight className="text-2xl group-hover:translate-x-1 transition-transform text-slate-500" />
         </div>
       </div>
     </Link>
