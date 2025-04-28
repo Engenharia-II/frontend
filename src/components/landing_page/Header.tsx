@@ -46,7 +46,7 @@ export default function Header() {
           <input
             type="text"
             placeholder="Busque tópicos, cursos ou perguntas..."
-            className="w-full pl-10 pr-4 py-3 rounded-md bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-white/30"
+            className="w-full pl-10 pr-4 py-3 rounded-md bg-white/10 border border-white/20 text-white placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-white/30"
           />
         </div>
 
