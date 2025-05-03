@@ -1,7 +1,7 @@
 import { TopicType } from '@/@types/DashboardTypes/TopicType';
 import Link from 'next/link';
 import { TiArrowRight } from 'react-icons/ti';
-import TopicItem from './TopicITem';
+import TopicItem from './TopicItem';
 
 interface TopicListProps {
   topics: TopicType[];

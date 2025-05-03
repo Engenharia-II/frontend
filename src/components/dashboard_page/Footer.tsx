@@ -17,7 +17,7 @@ export default function Footer() {
             <Link href={'/dashboard'} className="hover:text-gray-200">
               Início
             </Link>
-            <Link href={'/disciplines'} className="hover:text-gray-200">
+            <Link href={'/subjects'} className="hover:text-gray-200">
               Disciplinas
             </Link>
             <Link href={'/about'} className="hover:text-gray-200">
@@ -28,22 +28,16 @@ export default function Footer() {
         <div>
           <h2 className="text-gray-200 text-xl font-bold mb-4">Disciplinas</h2>
           <ul className="flex flex-col gap-2">
-            <Link
-              href={'/disciplines/algoritmos'}
-              className="hover:text-gray-200"
-            >
+            <Link href={'/subjects/algorithms'} className="hover:text-gray-200">
               Algoritmos
             </Link>
-            <Link
-              href={'/disciplines/banco_de_dados'}
-              className="hover:text-gray-200"
-            >
+            <Link href={'/subjects/databases'} className="hover:text-gray-200">
               Banco de Dados
             </Link>
-            <Link href={'/disciplines/redes'} className="hover:text-gray-200">
+            <Link href={'/subjects/redes'} className="hover:text-gray-200">
               Redes
             </Link>
-            <Link href={'/disciplines/poo'} className="hover:text-gray-200">
+            <Link href={'/subjects/OOP'} className="hover:text-gray-200">
               POO
             </Link>
           </ul>
