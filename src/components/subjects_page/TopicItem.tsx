@@ -1,6 +1,6 @@
 'use client';
 
-import { ContentTopicType } from '@/@types/DashboardTypes/SubjectTypes/ContentTypes/ContentTopicType';
+import { ContentTopicType } from '@/@types/SubjectPageTypes/ContentTypes/ContentTopicType';
 import { ChevronDownIcon } from 'lucide-react';
 import { useState } from 'react';
 

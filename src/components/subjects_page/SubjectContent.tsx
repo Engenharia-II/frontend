@@ -1,4 +1,4 @@
-import { SubjectContentType } from '@/@types/DashboardTypes/SubjectTypes/ContentTypes/SubjectContentType';
+import { SubjectContentType } from '@/@types/SubjectPageTypes/ContentTypes/SubjectContentType';
 
 interface SubjectContentProps {
   subjectContent: SubjectContentType[];
