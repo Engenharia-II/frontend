@@ -19,12 +19,14 @@ export default function TopicsItem({ topic }: TopicItemProps) {
         role="button"
       >
         <div className="flex items-center gap-4">
-          <div className="w-8 h-8 flex items-center justify-center text-white text-lg font-bold bg-slate-900 rounded-full">
+          <div className="md:w-8 md:h-8 flex items-center justify-center text-white text-lg font-bold bg-slate-900 rounded-full">
             {topic.id}
           </div>
           <div>
-            <h1 className="font-bold text-xl">{topic.title}</h1>
-            <p className="text-gray-600">{topic.description}</p>
+            <h1 className="font-bold md:text-xl">{topic.title}</h1>
+            <p className="text-gray-600 text-sm md:text-md">
+              {topic.description}
+            </p>
           </div>
         </div>
         <div

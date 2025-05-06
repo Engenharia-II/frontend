@@ -11,7 +11,7 @@ export default function TopicContents({ contents }: TopicContentsProps) {
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
         Conteúdos do Tópico
       </h1>
-      <div className="grid grid-cols-2 gap-2">
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-2">
         {contents.map((content, index) => (
           <TopicContentItem key={index} content={content} />
         ))}

@@ -13,7 +13,7 @@ export default function TopicsHeader({ topicData }: TopicDataProps) {
 
   return (
     <section className="bg-gray-900 text-white py-7">
-      <div className="flex flex-col gap-4 ml-10">
+      <div className="flex flex-col gap-4 mx-10">
         <div className="flex flex-col">
           <h1 className="text-4xl font-bold">{topicData.name}</h1>
           <div className="flex items-center gap-2 text-sm">
@@ -33,7 +33,7 @@ export default function TopicsHeader({ topicData }: TopicDataProps) {
           </div>
           <p>{topicData.progress}%</p>
         </div>
-        <p className="w-2xl text-justify">{topicData.description}</p>
+        <p className="md:w-2xl text-justify">{topicData.description}</p>
       </div>
     </section>
   );
