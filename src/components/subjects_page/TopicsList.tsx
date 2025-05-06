@@ -1,4 +1,4 @@
-import { ContentTopicType } from '@/@types/DashboardTypes/SubjectTypes/ContentTypes/ContentTopicType';
+import { ContentTopicType } from '@/@types/SubjectPageTypes/ContentTypes/ContentTopicType';
 import TopicItem from './TopicItem';
 
 interface TopicsListProps {
