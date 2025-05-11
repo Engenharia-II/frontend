@@ -1,4 +1,4 @@
-import { ActivityType } from '@/@types/DashboardTypes/ActivityType';
+import { ActivityType } from '@/@types/AppTypes/ActivityType';
 import clsx from 'clsx';
 
 interface ActivityListProps {

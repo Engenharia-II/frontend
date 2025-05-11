@@ -22,7 +22,7 @@ export default function Navbar() {
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-between mx-18">
-      <Link href={'/dashboard'}>
+      <Link href={'/app'}>
         <h1 className="text-xl font-bold">CaminhoDev</h1>
       </Link>
       <div className="flex flex-col md:flex-row items-center justify-center gap-3">

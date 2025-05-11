@@ -1,4 +1,4 @@
-import { ActivityType } from '@/@types/DashboardTypes/ActivityType';
+import { ActivityType } from '@/@types/AppTypes/ActivityType';
 import Link from 'next/link';
 import ActivityItem from './ActivityItem';
 import { TiArrowRight } from 'react-icons/ti';

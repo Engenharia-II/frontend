@@ -1,5 +1,5 @@
-import Footer from '../dashboard_page/Footer';
-import Navbar from '../dashboard_page/Navbar';
+import Footer from '../app_page/Footer';
+import Navbar from '../app_page/Navbar';
 import SubjectContent from './SubjectContent';
 import SubjectHeader from './SubjectHeader';
 import TopicsList from './TopicsList';

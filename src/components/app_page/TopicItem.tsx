@@ -1,4 +1,4 @@
-import { TopicType } from '@/@types/DashboardTypes/TopicType';
+import { TopicType } from '@/@types/AppTypes/TopicType';
 import Link from 'next/link';
 import { FaRegClock } from 'react-icons/fa';
 import { TiArrowRight } from 'react-icons/ti';

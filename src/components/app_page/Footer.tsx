@@ -14,7 +14,7 @@ export default function Footer() {
             Links Rápidos
           </h2>
           <ul className="flex flex-col gap-2">
-            <Link href={'/dashboard'} className="hover:text-gray-200">
+            <Link href={'/app'} className="hover:text-gray-200">
               Início
             </Link>
             <Link href={'/subjects'} className="hover:text-gray-200">
