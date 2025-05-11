@@ -12,12 +12,34 @@ import Link from 'next/link';
 import { useState } from 'react';
 import UserImage from '@/../public/assets/images/user_image.png';
 import Image from 'next/image';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
+  const router = useRouter();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   function handleSubmit() {
     setIsSearchOpen(!isSearchOpen);
+  }
+
+  async function handleLogout() {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/sessions/logout`,
+        {
+          method: 'POST',
+          credentials: 'include'
+        }
+      );
+      if (!response.ok) {
+        throw new Error('Erro ao sair');
+      }
+      toast.success('Logout realizado com sucesso');
+      router.push('/');
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'Erro ao sair');
+    }
   }
 
   return (
@@ -80,10 +102,13 @@ export default function Navbar() {
                     </Link>
                   </li>
                   <li>
-                    <div className="flex items-center gap-2 p-2 hover:bg-slate-100 rounded-md transition-all duration-200 cursor-pointer">
+                    <button
+                      onClick={handleLogout}
+                      className="flex items-center w-full gap-2 p-2 hover:bg-slate-100 rounded-md transition-all duration-200 cursor-pointer"
+                    >
                       <LogOut className="h-5 w-5 text-red-500" />
                       <span className="text-red-500">Sair</span>
-                    </div>
+                    </button>
                   </li>
                 </ul>
               </NavigationMenuContent>
