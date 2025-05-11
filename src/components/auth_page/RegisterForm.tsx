@@ -5,6 +5,8 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { useState } from 'react';
+import { handleLogin } from './LoginForm';
+import { useRouter } from 'next/navigation';
 
 const registerSchema = z
   .object({
@@ -29,6 +31,7 @@ export default function RegisterForm() {
     resolver: zodResolver(registerSchema)
   });
   const [isRegistering, setIsRegistering] = useState(false);
+  const router = useRouter();
 
   async function onSubmit({ name, email, password }: RegisterData) {
     setIsRegistering(true);
@@ -50,6 +53,8 @@ export default function RegisterForm() {
       }
       toast.success('Usuário registrado com sucesso!');
       reset();
+      await handleLogin({ email, password });
+      router.push('/app');
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : 'Erro ao registrar usuário';

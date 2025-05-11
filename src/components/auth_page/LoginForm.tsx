@@ -13,6 +13,27 @@ const loginSchema = z.object({
 });
 type LoginData = z.infer<typeof loginSchema>;
 
+export async function handleLogin({ email, password }: LoginData) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/sessions/login`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password }),
+      credentials: 'include'
+    }
+  );
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(result.message || 'Erro ao fazer login');
+  }
+
+  return result;
+}
+
 export default function LoginForm() {
   const {
     register,
@@ -28,22 +49,7 @@ export default function LoginForm() {
   async function onSubmit({ email, password }: LoginData) {
     setIsAuthenticating(true);
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/sessions/login`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email, password }),
-          credentials: 'include'
-        }
-      );
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message || 'Erro ao fazer login');
-      }
+      await handleLogin({ email, password });
       router.push('/app');
     } catch (error) {
       const errorMessage =
