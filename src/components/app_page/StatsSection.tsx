@@ -32,127 +32,87 @@ interface SavedContentInterface {
 }
 
 export default function StatsSection() {
-  const [subjectsStudies, setSubjectsStudies] = useState<
-    SubjectStudiesInterface[] | null
-  >(null);
-  const [topicsStudies, setTopicsStudies] = useState<
-    TopicsStudiesInterface[] | null
-  >(null);
-  const [savedContent, setSavedContent] = useState<
-    SavedContentInterface[] | null
-  >(null);
+  const [subjectsCount, setSubjectsCount] = useState(0);
+  const [topicsCount, setTopicsCount] = useState(0);
+  const [savedCount, setSavedCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchSubjectsStudies = async () => {
+  const fetchAllStats = async () => {
     try {
-      const response = await fetchWithAuth(
-        `${process.env.NEXT_PUBLIC_API_URL}/subject-studies`,
-        {
-          method: 'GET'
-        }
-      );
-      if (!response.ok) {
-        throw new Error('Não foi possível obter os progressos do usuário');
-      }
-      const data = (await response.json()) as SubjectStudiesInterface[];
-      setSubjectsStudies(
-        data.filter((subject) => subject.status === 'in_progress')
-      );
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : 'Erro ao obter dados do usuário';
-      toast.error(errorMessage);
-      return null;
-    } finally {
-      setIsLoading(false);
-    }
-  };
+      const [subjectsRes, topicsRes, savedRes] = await Promise.all([
+        fetchWithAuth(`${process.env.NEXT_PUBLIC_API_URL}/subject-studies`),
+        fetchWithAuth(`${process.env.NEXT_PUBLIC_API_URL}/topic-studies`),
+        fetchWithAuth(
+          `${process.env.NEXT_PUBLIC_API_URL}/saved-content/by-user-id`
+        )
+      ]);
 
-  const fetchTopicsStudies = async () => {
-    try {
-      const response = await fetchWithAuth(
-        `${process.env.NEXT_PUBLIC_API_URL}/topic-studies`,
-        {
-          method: 'GET'
-        }
-      );
-      if (!response.ok) {
-        throw new Error('Não foi possível obter os progressos do usuário');
+      if (!subjectsRes.ok || !topicsRes.ok || !savedRes.ok) {
+        throw new Error('Erro ao carregar dados do usuário');
       }
-      const data = (await response.json()) as TopicsStudiesInterface[];
-      setTopicsStudies(data);
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : 'Erro ao obter dados do usuário';
-      toast.error(errorMessage);
-      return null;
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
-  const fetchSavedContents = async () => {
-    try {
-      const response = await fetchWithAuth(
-        `${process.env.NEXT_PUBLIC_API_URL}/saved-content/by-user-id`,
-        {
-          method: 'GET'
-        }
+      const [subjects, topics, saved] = await Promise.all([
+        subjectsRes.json() as Promise<SubjectStudiesInterface[]>,
+        topicsRes.json() as Promise<TopicsStudiesInterface[]>,
+        savedRes.json() as Promise<SavedContentInterface[]>
+      ]);
+
+      const subjectsInProgress = subjects.filter(
+        (s) => s.status === 'in_progress'
       );
-      if (!response.ok) {
-        throw new Error('Não foi possível obter os progressos do usuário');
-      }
-      const data = (await response.json()) as SavedContentInterface[];
-      setSavedContent(data);
+
+      setSubjectsCount(subjectsInProgress.length);
+      setTopicsCount(topics.length);
+      setSavedCount(saved.length);
     } catch (error) {
-      const errorMessage =
+      toast.error(
         error instanceof Error
           ? error.message
-          : 'Erro ao obter dados do usuário';
-      toast.error(errorMessage);
-      return null;
+          : 'Erro desconhecido ao carregar dados'
+      );
     } finally {
       setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchSubjectsStudies();
-    fetchTopicsStudies();
-    fetchSavedContents();
+    fetchAllStats();
   }, []);
 
-  if (isLoading || !subjectsStudies || !topicsStudies || !savedContent) {
-    return <span>Carregando...</span>;
+  if (isLoading) {
+    return (
+      <div className="animate-pulse space-y-4">
+        <div className="h-24 bg-gray-100 rounded-lg" />
+        <div className="h-24 bg-gray-100 rounded-lg" />
+        <div className="h-24 bg-gray-100 rounded-lg" />
+      </div>
+    );
   }
+
   return (
     <div className="grid grid-cols-1 gap-4">
       <StatCard
         icon={<IoBookOutline />}
         label="Disciplinas em andamento"
-        value={subjectsStudies.length}
-        color="text-blue-500"
-        bgColor="bg-blue-200"
+        value={subjectsCount}
+        color="text-blue-600"
+        bgColor="bg-blue-100"
       />
 
       <StatCard
         icon={<VscMortarBoard />}
         label="Tópicos concluídos"
-        value={topicsStudies.length}
-        color="text-green-500"
-        bgColor="bg-green-200"
+        value={topicsCount}
+        color="text-green-600"
+        bgColor="bg-green-100"
       />
 
       <StatCard
         icon={<IoBookmarksOutline />}
         label="Recursos salvos"
-        value={savedContent.length}
-        color="text-purple-500"
-        bgColor="bg-purple-200"
+        value={savedCount}
+        color="text-purple-600"
+        bgColor="bg-purple-100"
       />
     </div>
   );
