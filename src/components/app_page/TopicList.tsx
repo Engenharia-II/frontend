@@ -1,13 +1,54 @@
-import { TopicType } from '@/@types/AppTypes/TopicType';
+'use client';
+
 import Link from 'next/link';
 import { TiArrowRight } from 'react-icons/ti';
 import TopicItem from './TopicItem';
+import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 
-interface TopicListProps {
-  topics: TopicType[];
+export interface TopicInterface {
+  id: string;
+  name: string;
+  description: string;
+  position: number;
+  subjectId: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export default function TopicList({ topics }: TopicListProps) {
+export default function TopicList() {
+  const [topics, setTopics] = useState<TopicInterface[] | null>(null);
+
+  const fetchTopics = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/topics`,
+        {
+          method: 'GET',
+          credentials: 'include'
+        }
+      );
+      if (!response.ok) {
+        throw new Error('Não foi possível buscar os tópicos');
+      }
+      const data = await response.json();
+      const sortedData = data.sort(
+        (a: TopicInterface, b: TopicInterface) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+      const limitedData = sortedData.slice(0, 5);
+      setTopics(limitedData);
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : 'Erro desconhecido';
+      toast.error(errorMessage);
+    }
+  };
+
+  useEffect(() => {
+    fetchTopics();
+  }, []);
+
   return (
     <div className="mx-8 mt-8">
       <div className="flex justify-between items-center">
@@ -26,9 +67,7 @@ export default function TopicList({ topics }: TopicListProps) {
         </Link>
       </div>
       <div className="mt-8 space-y-4">
-        {topics.map((topic, index) => (
-          <TopicItem key={index} topic={topic} />
-        ))}
+        {topics?.map((topic) => <TopicItem {...topic} key={topic.id} />)}
       </div>
     </div>
   );
