@@ -1,5 +1,6 @@
 'use client';
 
+import { fetchWithAuth } from '@/lib/fetchWithAuth';
 import { usePathname } from 'next/navigation';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { toast } from 'sonner';
@@ -28,9 +29,9 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const res = await fetch(
+        const res = await fetchWithAuth(
           `${process.env.NEXT_PUBLIC_API_URL}/users/get-by-id`,
-          { method: 'GET', credentials: 'include' }
+          { method: 'GET' }
         );
         if (!res.ok) throw new Error('Erro ao obter usuário');
         const data = await res.json();

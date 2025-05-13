@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { toast } from 'sonner';
+import { fetchWithAuth } from '@/lib/fetchWithAuth';
 
 interface progressDataInterface {
   subjectId: string;
@@ -21,11 +22,10 @@ export default function ProgressTracker() {
   // add interface for the user data
   const fetchProgressData = async () => {
     try {
-      const response = await fetch(
+      const response = await fetchWithAuth(
         `${process.env.NEXT_PUBLIC_API_URL}/subjects/progress`,
         {
-          method: 'GET',
-          credentials: 'include'
+          method: 'GET'
         }
       );
       if (!response.ok) {

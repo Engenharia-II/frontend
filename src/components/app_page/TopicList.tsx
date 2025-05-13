@@ -5,6 +5,7 @@ import { TiArrowRight } from 'react-icons/ti';
 import TopicItem from './TopicItem';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
+import { fetchWithAuth } from '@/lib/fetchWithAuth';
 
 export interface TopicInterface {
   id: string;
@@ -21,11 +22,10 @@ export default function TopicList() {
 
   const fetchTopics = async () => {
     try {
-      const response = await fetch(
+      const response = await fetchWithAuth(
         `${process.env.NEXT_PUBLIC_API_URL}/topics`,
         {
-          method: 'GET',
-          credentials: 'include'
+          method: 'GET'
         }
       );
       if (!response.ok) {

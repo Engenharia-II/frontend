@@ -5,6 +5,7 @@ import { VscMortarBoard } from 'react-icons/vsc';
 import StatCard from './StatCard';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
+import { fetchWithAuth } from '@/lib/fetchWithAuth';
 
 interface SubjectStudiesInterface {
   userId: string;
@@ -44,11 +45,10 @@ export default function StatsSection() {
 
   const fetchSubjectsStudies = async () => {
     try {
-      const response = await fetch(
+      const response = await fetchWithAuth(
         `${process.env.NEXT_PUBLIC_API_URL}/subject-studies`,
         {
-          method: 'GET',
-          credentials: 'include'
+          method: 'GET'
         }
       );
       if (!response.ok) {
@@ -72,11 +72,10 @@ export default function StatsSection() {
 
   const fetchTopicsStudies = async () => {
     try {
-      const response = await fetch(
+      const response = await fetchWithAuth(
         `${process.env.NEXT_PUBLIC_API_URL}/topic-studies`,
         {
-          method: 'GET',
-          credentials: 'include'
+          method: 'GET'
         }
       );
       if (!response.ok) {
@@ -98,11 +97,10 @@ export default function StatsSection() {
 
   const fetchSavedContents = async () => {
     try {
-      const response = await fetch(
+      const response = await fetchWithAuth(
         `${process.env.NEXT_PUBLIC_API_URL}/saved-content/by-user-id`,
         {
-          method: 'GET',
-          credentials: 'include'
+          method: 'GET'
         }
       );
       if (!response.ok) {
