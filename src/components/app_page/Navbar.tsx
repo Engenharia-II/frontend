@@ -40,7 +40,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between mx-18">
+    <div className="flex flex-col md:flex-row items-center justify-between mx-18 py-3">
       <Link href={'/app'}>
         <h1 className="text-xl font-bold">CaminhoDev</h1>
       </Link>
