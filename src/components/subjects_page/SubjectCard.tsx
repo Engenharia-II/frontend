@@ -76,7 +76,7 @@ const SubjectCard: FC<SubjectProps> = ({ subject }) => {
           href={`/app/subjects/topics?subjectId=${subject.id}`}
           className="flex items-center justify-between w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-medium py-2.5 px-4 rounded-lg transition-colors group"
         >
-          <span>Ver conteúdo</span>
+          <span>Ver Tópicos</span>
           <TiArrowRight className="text-xl group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>

@@ -84,10 +84,12 @@ export default function ProgressTracker() {
                   >
                     <div
                       className="h-full bg-black rounded-full transition-all duration-700"
-                      style={{ width: `${subject.progress * 100}%` }}
+                      style={{
+                        width: `${Math.round(subject.progress * 100)}%`
+                      }}
                     />
                     <span className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-white font-semibold">
-                      {(subject.progress * 100).toFixed(2)}%
+                      {Math.round(subject.progress * 100)}%
                     </span>
                   </div>
                 </div>
