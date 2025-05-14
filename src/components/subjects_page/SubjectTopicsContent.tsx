@@ -90,16 +90,31 @@ export function SubjectTopicsContent() {
     setIsUpdatingStatus(topicId);
 
     try {
-      const response = await fetchWithAuth(
-        `${process.env.NEXT_PUBLIC_API_URL}/topic-studies`,
-        {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ topicId })
-        }
-      );
+      let response;
+
+      if (currentStatus) {
+        response = await fetchWithAuth(
+          `${process.env.NEXT_PUBLIC_API_URL}/topic-studies`,
+          {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ topicId })
+          }
+        );
+      } else {
+        response = await fetchWithAuth(
+          `${process.env.NEXT_PUBLIC_API_URL}/topic-studies`,
+          {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ topicId })
+          }
+        );
+      }
 
       if (!response.ok) {
         throw new Error('Não foi possível atualizar o status do tópico');
