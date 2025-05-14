@@ -6,6 +6,7 @@ import TopicItem from './TopicItem';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { fetchWithAuth } from '@/lib/fetchWithAuth';
+import { SkeletonBox } from '../ui/skeleton-box';
 
 export interface TopicInterface {
   id: string;
@@ -19,8 +20,12 @@ export interface TopicInterface {
 
 export default function TopicList() {
   const [topics, setTopics] = useState<TopicInterface[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchTopics = async () => {
+    setIsLoading(true);
+    setError(null);
     try {
       const response = await fetchWithAuth(
         `${process.env.NEXT_PUBLIC_API_URL}/topics`,
@@ -41,13 +46,38 @@ export default function TopicList() {
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : 'Erro desconhecido';
+      setError(errorMessage);
       toast.error(errorMessage);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     fetchTopics();
   }, []);
+
+  const TopicSkeletons = () => (
+    <>
+      {[...Array(5)].map((_, index) => (
+        <div
+          key={index}
+          className="flex flex-col bg-white border border-slate-300 rounded-lg p-5"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <SkeletonBox width="w-8" height="h-8" className="rounded-full" />
+              <div className="space-y-2">
+                <SkeletonBox width="w-40" height="h-5" />
+                <SkeletonBox width="w-60" height="h-4" />
+              </div>
+            </div>
+            <SkeletonBox width="w-6" height="h-6" />
+          </div>
+        </div>
+      ))}
+    </>
+  );
 
   return (
     <div className="mx-8 mt-8">
@@ -67,7 +97,25 @@ export default function TopicList() {
         </Link>
       </div>
       <div className="mt-8 space-y-4">
-        {topics?.map((topic) => <TopicItem {...topic} key={topic.id} />)}
+        {isLoading ? (
+          <TopicSkeletons />
+        ) : error ? (
+          <div className="text-center py-6 bg-white border border-slate-300 rounded-lg">
+            <p className="text-gray-500 mb-2">{error}</p>
+            <button
+              onClick={() => fetchTopics()}
+              className="text-blue-600 hover:text-blue-800 font-medium"
+            >
+              Tentar novamente
+            </button>
+          </div>
+        ) : topics && topics.length > 0 ? (
+          topics.map((topic) => <TopicItem {...topic} key={topic.id} />)
+        ) : (
+          <div className="text-center py-6 bg-white border border-slate-300 rounded-lg">
+            <p className="text-gray-500">Nenhum tópico encontrado</p>
+          </div>
+        )}
       </div>
     </div>
   );
