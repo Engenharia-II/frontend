@@ -8,6 +8,7 @@ import SubjectCard from './SubjectCard';
 import { SubjectsStats } from './SubjectsStats';
 import { FaSearch } from 'react-icons/fa';
 import { MdOutlineFilterList } from 'react-icons/md';
+import { useSearchParams } from 'next/navigation';
 
 type Subject = {
   id: string;
@@ -38,8 +39,12 @@ export function AllSubjectsPageContent() {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const urlParams = useSearchParams();
+  const statusFilterParams = urlParams.get('status');
   const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [statusFilter, setStatusFilter] = useState<string>(
+    statusFilterParams || 'all'
+  );
 
   const fetchAllData = async () => {
     setIsLoading(true);

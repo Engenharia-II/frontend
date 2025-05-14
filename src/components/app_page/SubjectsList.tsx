@@ -87,7 +87,7 @@ export default function SubjectsList() {
           </p>
         </div>
         <Link
-          href={'/subjects'}
+          href={'/app/subjects'}
           className="flex items-center justify-center bg-white hover:bg-slate-100 border rounded-lg border-slate-300 shadow-slate-200 px-4 py-2 font-semibold group"
         >
           Ver tudo

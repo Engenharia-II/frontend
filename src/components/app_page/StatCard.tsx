@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import clsx from 'clsx';
+import Link from 'next/link';
 
 interface StatCardProps {
   icon: ReactNode;
@@ -7,6 +8,7 @@ interface StatCardProps {
   value: number;
   color: string;
   bgColor: string;
+  href: string;
 }
 
 export default function StatCard({
@@ -14,10 +16,14 @@ export default function StatCard({
   label,
   value,
   color,
-  bgColor
+  bgColor,
+  href
 }: StatCardProps) {
   return (
-    <div className="bg-white shadow-slate-200 border-slate-200 border w-full overflow-hidden pl-7 pr-3 py-6 rounded-lg border-solid px-5">
+    <Link
+      href={href}
+      className="bg-white shadow-slate-200 border-slate-200 border w-full overflow-hidden pl-7 pr-3 py-6 rounded-lg border-solid px-5 hover:shadow-md transition-shadow duration-300"
+    >
       <div className="flex items-center justify-center gap-3 md:items-start md:justify-start md:gap-0">
         <div
           className={clsx(
@@ -37,6 +43,6 @@ export default function StatCard({
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

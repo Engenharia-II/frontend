@@ -94,6 +94,7 @@ export default function StatsSection() {
       <StatCard
         icon={<IoBookOutline />}
         label="Disciplinas em andamento"
+        href="/app/subjects?status=in_progress"
         value={subjectsCount}
         color="text-blue-600"
         bgColor="bg-blue-100"
@@ -101,6 +102,7 @@ export default function StatsSection() {
 
       <StatCard
         icon={<VscMortarBoard />}
+        href="/app/topics"
         label="Tópicos concluídos"
         value={topicsCount}
         color="text-green-600"
@@ -110,6 +112,7 @@ export default function StatsSection() {
       <StatCard
         icon={<IoBookmarksOutline />}
         label="Recursos salvos"
+        href="/app/saved"
         value={savedCount}
         color="text-purple-600"
         bgColor="bg-purple-100"
