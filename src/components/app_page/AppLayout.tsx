@@ -3,6 +3,7 @@ import ProgressTracker from './ProgressTracker';
 import StatsSection from './StatsSection';
 import Footer from './Footer';
 import TopicList from './TopicList';
+import SubjectList from './SubjectsList';
 
 export function AppLayout() {
   return (
@@ -16,6 +17,9 @@ export function AppLayout() {
           <div className="md:flex-[1]">
             <StatsSection />
           </div>
+        </section>
+        <section>
+          <SubjectList />
         </section>
         <section>
           <TopicList />
