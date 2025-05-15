@@ -6,7 +6,7 @@ import { TopicInterface } from './TopicList';
 export default function TopicItem(topic: TopicInterface) {
   return (
     <Link
-      href={''}
+      href={`/app/topics/contents?topicId=${topic.id}`}
       className="flex flex-col bg-white border border-slate-300 hover:shadow-md transition-shadow rounded-lg p-5 group"
     >
       <div className="flex items-center justify-between">

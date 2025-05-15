@@ -383,7 +383,7 @@ export function SubjectTopicsContent() {
                       className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors flex items-center gap-2"
                     >
                       <FaPlay className="text-xs" />
-                      <span>Iniciar</span>
+                      <span>Ver conteúdos</span>
                     </Link>
                   </div>
                 </div>
