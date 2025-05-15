@@ -313,6 +313,7 @@ export default function SavedContentPage() {
                       src={item.content.tumbnailUrl}
                       alt={item.content.name}
                       fill
+                      sizes="100%"
                       className="object-cover"
                     />
                   ) : (

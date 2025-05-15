@@ -44,6 +44,7 @@ export default function SavedContentSection({
                         src={savedContent.content.tumbnailUrl}
                         alt={savedContent.content.name}
                         fill
+                        sizes="100%"
                         className="object-cover"
                       />
                     ) : (
