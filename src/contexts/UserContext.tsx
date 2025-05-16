@@ -10,6 +10,10 @@ export interface UserDataInterface {
   name: string;
   email: string;
   lastAccess: string | null;
+  role?: {
+    id: number;
+    name: string;
+  };
 }
 
 const PUBLIC_ROUTES = ['/', '/auth'];
@@ -17,7 +21,12 @@ const PUBLIC_ROUTES = ['/', '/auth'];
 const UserContext = createContext<{
   user: UserDataInterface | null;
   loading: boolean;
-}>({ user: null, loading: true });
+  setUser: (userData: UserDataInterface) => void;
+}>({
+  user: null,
+  loading: true,
+  setUser: () => {}
+});
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -53,7 +62,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   }, [shouldFetchUser]);
 
   return (
-    <UserContext.Provider value={{ user, loading }}>
+    <UserContext.Provider value={{ user, loading, setUser }}>
       {children}
     </UserContext.Provider>
   );
