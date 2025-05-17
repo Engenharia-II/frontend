@@ -8,13 +8,13 @@ import ProgressSection from './dashboard/ProgressSection';
 import RecommendationSection from './dashboard/RecommendationSection';
 import StatsOverview from './dashboard/StatsOverview';
 import QuickActions from './dashboard/QuickActions';
-import DashboardHeader from './dashboard/DashboardHeader';
 import SavedContentSection from './dashboard/SavedContentSection';
 import Footer from './Footer';
 import { UserStatsType } from '@/@types/AppTypes/UserStatsType';
 import { SavedContentType } from '@/@types/AppTypes/SavedContentType';
 import { ProgressType } from '@/@types/AppTypes/ProgressType';
 import { SubjectType } from '@/@types/AppTypes/SubjectType';
+import Header from './Header';
 
 export function Dashboard() {
   const [userStats, setUserStats] = useState<UserStatsType | null>(null);
@@ -116,7 +116,7 @@ export function Dashboard() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <DashboardHeader />
+      <Header />
 
       <main className="flex-1 container mx-auto px-4 py-6">
         {isLoading ? (

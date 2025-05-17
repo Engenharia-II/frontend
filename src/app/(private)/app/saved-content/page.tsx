@@ -4,7 +4,6 @@ import { ContentType } from '@/@types/TopicPageTypes/ContentType';
 import { useEffect, useState } from 'react';
 import { fetchWithAuth } from '@/lib/fetchWithAuth';
 import { toast } from 'sonner';
-import DashboardHeader from '@/components/app_page/dashboard/DashboardHeader';
 import Footer from '@/components/app_page/Footer';
 import { SkeletonBox } from '@/components/ui/skeleton-box';
 import {
@@ -17,6 +16,7 @@ import {
 import Image from 'next/image';
 import ContentTypeIcon from '@/components/topics_page/ContentTypeIcon';
 import Link from 'next/link';
+import Header from '@/components/app_page/Header';
 
 interface SavedContent {
   id: string;
@@ -187,7 +187,7 @@ export default function SavedContentPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <DashboardHeader />
+      <Header />
 
       <main className="flex-1 container mx-auto px-4 py-6">
         <div className="flex items-center justify-between mb-6">

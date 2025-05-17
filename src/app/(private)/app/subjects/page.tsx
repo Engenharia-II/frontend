@@ -1,10 +1,10 @@
-import DashboardHeader from '@/components/app_page/dashboard/DashboardHeader';
+import Header from '@/components/app_page/Header';
 import { AllSubjectsPageContent } from '@/components/subjects_page/AllSubjectsPageContent';
 
 export default function Subjects() {
   return (
     <>
-      <DashboardHeader />
+      <Header />
       <AllSubjectsPageContent />
     </>
   );
