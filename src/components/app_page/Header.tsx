@@ -129,8 +129,14 @@ export default function Header() {
                               {user?.name}
                             </div>
                             <div className="text-xs text-gray-500 flex items-center">
-                              Último acesso{' '}
-                              {formatLastAccess(user?.lastAccess || '')}
+                              {user?.lastAppAccess ? (
+                                <>
+                                  Último acesso{' '}
+                                  {formatLastAccess(user?.lastAppAccess || '')}
+                                </>
+                              ) : (
+                                'Seja bem-vindo(a)!'
+                              )}
                             </div>
                           </div>
                         </NavigationMenuTrigger>
