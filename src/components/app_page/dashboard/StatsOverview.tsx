@@ -44,14 +44,18 @@ export default function StatsOverview(stats: UserStatsType) {
       {statCards.map((stat, index) => (
         <Card
           key={index}
-          className="p-6 hover:shadow-md transition-shadow bg-white dark:bg-gray-900"
+          className={
+            'p-6 hover:shadow-md transition-shadow bg-white dark:bg-gray-900 border border-black dark:border-gray-700'
+          }
         >
           <div className="flex items-start">
             <div className={`p-3 rounded-full ${stat.bgColor} mr-4`}>
               {stat.icon}
             </div>
             <div>
-              <p className="text-sm text-gray-500">{stat.name}</p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                {stat.name}
+              </p>
               <h4 className={`text-2xl font-bold ${stat.textColor}`}>
                 {stat.value}
               </h4>

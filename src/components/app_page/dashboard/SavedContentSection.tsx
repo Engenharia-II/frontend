@@ -13,12 +13,14 @@ export default function SavedContentSection({
   savedContents
 }: SavedContentSectionProps) {
   return (
-    <Card className="mt-6">
-      <CardHeader className="pb-2 flex flex-row items-center justify-between">
-        <CardTitle className="text-xl font-bold">Conteúdos salvos</CardTitle>
+    <Card className="mt-6 bg-white dark:bg-gray-900 border border-black dark:border-gray-700 hover:shadow-md transition-shadow">
+      <CardHeader className="pb-2 flex flex-row items-center justify-between bg-white dark:bg-gray-900 border-b border-black dark:border-gray-700">
+        <CardTitle className="text-xl font-bold text-gray-900 dark:text-gray-100">
+          Conteúdos salvos
+        </CardTitle>
         <Link
           href="/app/saved-content"
-          className="text-blue-600 hover:text-blue-800 text-sm flex items-center"
+          className="text-gray-900 dark:text-gray-100 hover:text-blue-700 dark:hover:text-blue-400 text-sm flex items-center transition-colors"
         >
           Ver todos
           <FaArrowRight className="ml-1 text-xs" />
@@ -27,7 +29,9 @@ export default function SavedContentSection({
       <CardContent>
         {savedContents.length === 0 ? (
           <div className="text-center py-6">
-            <p className="text-gray-500">Nenhum conteúdo salvo encontrado</p>
+            <p className="text-gray-500 dark:text-gray-400">
+              Nenhum conteúdo salvo encontrado
+            </p>
           </div>
         ) : (
           <div className="space-y-4">
@@ -36,9 +40,9 @@ export default function SavedContentSection({
               .map((savedContent, index) => (
                 <div
                   key={index}
-                  className="flex border rounded-lg overflow-hidden"
+                  className="flex border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-900"
                 >
-                  <div className="w-24 h-20 bg-gray-100 relative flex-shrink-0">
+                  <div className="w-24 h-20 bg-gray-100 dark:bg-gray-800 relative flex-shrink-0">
                     {savedContent.content?.tumbnailUrl ? (
                       <Image
                         src={savedContent.content.tumbnailUrl}
@@ -57,15 +61,15 @@ export default function SavedContentSection({
                     )}
                   </div>
                   <div className="flex-1 p-3 flex flex-col">
-                    <h3 className="font-medium text-gray-900 text-sm line-clamp-1">
+                    <h3 className="font-medium text-gray-900 dark:text-gray-100 text-sm line-clamp-1">
                       {savedContent.content?.name}
                     </h3>
-                    <p className="text-xs text-gray-600 line-clamp-1">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-1">
                       {savedContent.content?.description}
                     </p>
 
                     <div className="mt-auto flex justify-between items-center">
-                      <span className="text-xs bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full">
+                      <span className="text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-full">
                         {savedContent.content?.type}
                       </span>
 
@@ -73,7 +77,7 @@ export default function SavedContentSection({
                         href={savedContent.content?.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-600 hover:text-blue-800 text-sm flex items-center"
+                        className="text-gray-900 dark:text-gray-100 hover:text-blue-700 dark:hover:text-blue-400 text-sm flex items-center transition-colors"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <FaExternalLinkAlt size={12} />
