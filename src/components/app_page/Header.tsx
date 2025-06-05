@@ -160,12 +160,15 @@ export default function Header() {
                     <NavigationMenuList>
                       <NavigationMenuItem>
                         <NavigationMenuTrigger className="flex items-center gap-2 p-2 rounded-md transition-all duration-200 hover:cursor-pointer">
-                          <FaUserCircle size={32} className="text-gray-600" />
+                          <FaUserCircle
+                            size={32}
+                            className="text-gray-600 dark:text-gray-300"
+                          />
                           <div className="hidden md:block ml-3">
-                            <div className="text-sm font-medium text-gray-900">
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
                               {user?.name}
                             </div>
-                            <div className="text-xs text-gray-500 flex items-center">
+                            <div className="text-xs text-gray-500 dark:text-gray-400 flex items-center">
                               {user?.lastAppAccess ? (
                                 <>
                                   Último acesso{' '}
@@ -177,7 +180,7 @@ export default function Header() {
                             </div>
                           </div>
                         </NavigationMenuTrigger>
-                        <NavigationMenuContent className="bg-white">
+                        <NavigationMenuContent className="bg-white dark:bg-gray-900">
                           <ul className="grid w-64 gap-1 p-2">
                             <li>
                               <Link
@@ -212,7 +215,7 @@ export default function Header() {
                               <button
                                 onClick={handleLogout}
                                 type="button"
-                                className="flex w-full items-center gap-2 p-2 hover:bg-slate-100 rounded-md transition-all duration-200 cursor-pointer"
+                                className="flex w-full items-center gap-2 p-2 hover:bg-slate-100 rounded-md transition-all duration-200 cursor-pointer dark:hover:bg-gray-800"
                               >
                                 <LogOut className="h-5 w-5 text-red-500" />
                                 <span className="text-red-500">Sair</span>

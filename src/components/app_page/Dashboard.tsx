@@ -10,10 +10,10 @@ import StatsOverview from './dashboard/StatsOverview';
 import QuickActions from './dashboard/QuickActions';
 import SavedContentSection from './dashboard/SavedContentSection';
 import Footer from './Footer';
-import { UserStatsType } from '@/@types/AppTypes/UserStatsType';
-import { SavedContentType } from '@/@types/AppTypes/SavedContentType';
-import { ProgressType } from '@/@types/AppTypes/ProgressType';
-import { SubjectType } from '@/@types/AppTypes/SubjectType';
+import type { UserStatsType } from '@/@types/AppTypes/UserStatsType';
+import type { SavedContentType } from '@/@types/AppTypes/SavedContentType';
+import type { ProgressType } from '@/@types/AppTypes/ProgressType';
+import type { SubjectType } from '@/@types/AppTypes/SubjectType';
 import Header from './Header';
 
 export function Dashboard() {
@@ -32,7 +32,9 @@ export function Dashboard() {
       // Fetch user statistics
       const statsResponse = await fetchWithAuth(
         `${process.env.NEXT_PUBLIC_API_URL}/users/statistics`,
-        { method: 'GET' }
+        {
+          method: 'GET'
+        }
       );
 
       if (!statsResponse.ok) {
@@ -45,7 +47,9 @@ export function Dashboard() {
       // Fetch progress data
       const progressResponse = await fetchWithAuth(
         `${process.env.NEXT_PUBLIC_API_URL}/subjects/progress`,
-        { method: 'GET' }
+        {
+          method: 'GET'
+        }
       );
 
       if (progressResponse.ok) {
@@ -56,7 +60,9 @@ export function Dashboard() {
       // Fetch saved content
       const savedContentResponse = await fetchWithAuth(
         `${process.env.NEXT_PUBLIC_API_URL}/saved-content/by-user-id`,
-        { method: 'GET' }
+        {
+          method: 'GET'
+        }
       );
 
       if (savedContentResponse.ok) {
@@ -123,7 +129,10 @@ export function Dashboard() {
           <div className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="bg-white rounded-lg shadow-sm p-6">
+                <div
+                  key={i}
+                  className="bg-white dark:bg-gray-800 rounded-lg shadow-sm dark:border dark:border-gray-700 p-6"
+                >
                   <SkeletonBox
                     width="w-12"
                     height="h-12"
@@ -135,7 +144,7 @@ export function Dashboard() {
               ))}
             </div>
 
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm dark:border dark:border-gray-700 p-6">
               <SkeletonBox width="w-48" height="h-8" className="mb-6" />
               <div className="space-y-4">
                 {[...Array(3)].map((_, i) => (
@@ -148,7 +157,7 @@ export function Dashboard() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white rounded-lg shadow-sm p-6 md:col-span-2">
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm dark:border dark:border-gray-700 p-6 md:col-span-2">
                 <SkeletonBox width="w-48" height="h-8" className="mb-6" />
                 <div className="space-y-4">
                   {[...Array(4)].map((_, i) => (
@@ -171,7 +180,7 @@ export function Dashboard() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-6">
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm dark:border dark:border-gray-700 p-6">
                 <SkeletonBox width="w-48" height="h-8" className="mb-6" />
                 <div className="space-y-4">
                   {[...Array(3)].map((_, i) => (
@@ -196,11 +205,11 @@ export function Dashboard() {
             </div>
           </div>
         ) : error ? (
-          <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-            <p className="text-red-500 mb-4">{error}</p>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm dark:border dark:border-gray-700 p-8 text-center">
+            <p className="text-red-500 dark:text-red-400 mb-4">{error}</p>
             <button
               onClick={fetchDashboardData}
-              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              className="bg-blue-600 text-white dark:bg-blue-700 px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
             >
               Tentar novamente
             </button>
