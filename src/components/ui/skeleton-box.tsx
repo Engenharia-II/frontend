@@ -5,7 +5,7 @@ export function SkeletonBox({
 }) {
   return (
     <div
-      className={`bg-slate-200 animate-pulse rounded ${width} ${height} ${className}`}
+      className={`bg-slate-200 dark:bg-slate-700 animate-pulse rounded ${width} ${height} ${className}`}
     />
   );
 }
