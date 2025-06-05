@@ -91,12 +91,21 @@ export default function Header() {
           {/* Logo and brand */}
           <div className="flex items-center">
             <Link href="/app" className="flex items-center">
+              {/* Logo para tema claro */}
+              <Image
+                src="/assets/logos/caminho_dev_logo_black.png"
+                alt="CaminhoDev Logo"
+                width={40}
+                height={40}
+                className="mr-3 block dark:hidden"
+              />
+              {/* Logo para tema escuro */}
               <Image
                 src="/assets/logos/caminho_dev_logo.png"
                 alt="CaminhoDev Logo"
                 width={40}
                 height={40}
-                className="mr-3"
+                className="mr-3 hidden dark:block"
               />
               <span className="text-xl font-bold text-gray-900 dark:text-white">
                 CaminhoDev
