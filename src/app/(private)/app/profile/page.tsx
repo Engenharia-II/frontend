@@ -20,22 +20,22 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 min-h-screen">
+    <div className="container mx-auto px-4 py-8 min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors">
       <div className="flex items-center mb-8 w-full">
         <Link
           href="/app"
-          className="flex items-center text-gray-600 hover:text-blue-600 mr-4 transition-colors"
+          className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 mr-4 transition-colors"
         >
           <FaArrowLeft className="mr-2" /> Voltar para o dashboard
         </Link>
       </div>
-      <h1 className="text-2xl text-center flex-1 md:text-3xl font-bold text-gray-800">
+      <h1 className="text-2xl text-center flex-1 md:text-3xl font-bold text-gray-800 dark:text-gray-100">
         Editar Perfil
       </h1>
 
       <div className="max-w-2xl mt-8 mx-auto">
         {loading ? (
-          <div className="bg-white p-8 rounded-lg shadow-md space-y-6">
+          <div className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md space-y-6">
             <div className="flex flex-col items-center mb-6">
               <SkeletonBox
                 width="w-24"
@@ -58,8 +58,8 @@ export default function ProfilePage() {
         ) : user ? (
           <ProfileForm />
         ) : (
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded mb-4">
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
+            <div className="bg-red-50 dark:bg-red-950 border-l-4 border-red-500 p-4 rounded mb-4">
               <div className="flex">
                 <div className="flex-shrink-0">
                   <svg
@@ -77,10 +77,10 @@ export default function ProfilePage() {
                   </svg>
                 </div>
                 <div className="ml-3">
-                  <h3 className="text-sm font-medium text-red-800">
+                  <h3 className="text-sm font-medium text-red-800 dark:text-red-300">
                     Erro ao carregar dados
                   </h3>
-                  <p className="text-sm text-red-700 mt-1">
+                  <p className="text-sm text-red-700 dark:text-red-400 mt-1">
                     Não foi possível carregar os dados do usuário. Por favor,
                     tente novamente mais tarde.
                   </p>

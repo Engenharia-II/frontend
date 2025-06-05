@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
@@ -9,10 +9,39 @@ import { useUser } from '@/contexts/UserContext';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { FaUserCircle } from 'react-icons/fa';
+import { Switch } from '@/components/ui/switch';
+import { Sun, Moon } from 'lucide-react';
 
 export default function ProfileForm() {
   const { user, setUser } = useUser();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Estado do tema escuro
+  const [darkTheme, setDarkTheme] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('darkTheme');
+      const isDark = savedTheme === 'true';
+      setDarkTheme(isDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newThemeValue = !darkTheme;
+    setDarkTheme(newThemeValue);
+    localStorage.setItem('darkTheme', String(newThemeValue));
+    if (newThemeValue) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
 
   const {
     register,
@@ -83,14 +112,37 @@ export default function ProfileForm() {
   };
 
   return (
-    <Card className="p-6 w-full max-w-md mx-auto shadow-lg border-t-4 border-blue-500">
+    <Card className="p-6 w-full max-w-md mx-auto shadow-lg bg-white dark:bg-gray-900 border border-black dark:border-gray-700">
+      {/* Botão de alternar tema */}
+      <div className="flex items-center justify-end mb-4">
+        <div
+          onClick={toggleTheme}
+          className="flex items-center gap-2 p-2 rounded-md transition-all duration-200 cursor-pointer hover:bg-slate-100 dark:hover:bg-gray-800 dark:text-gray-300 focus:outline-none focus:outline-2 focus:outline-black dark:focus:outline-gray-300"
+          tabIndex={0}
+        >
+          {darkTheme ? (
+            <Moon className="h-5 w-5" />
+          ) : (
+            <Sun className="h-5 w-5" />
+          )}
+          <span className="text-sm">Tema Escuro</span>
+          <Switch
+            checked={darkTheme}
+            onCheckedChange={toggleTheme}
+            aria-label="Alternar tema"
+          />
+        </div>
+      </div>
+
       <div className="flex flex-col items-center mb-6">
         <div className="w-24 h-24 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full flex items-center justify-center mb-4 shadow-md">
           <FaUserCircle size={64} className="text-white" />
         </div>
-        <h2 className="text-2xl font-bold text-gray-800">{user?.name}</h2>
-        <p className="text-gray-500">{user?.email}</p>
-        <span className="mt-2 px-3 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-full">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          {user?.name}
+        </h2>
+        <p className="text-gray-500 dark:text-gray-400">{user?.email}</p>
+        <span className="mt-2 px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-xs font-medium rounded-full">
           {user?.role?.name === 'admin' ? 'Administrador' : 'Estudante'}
         </span>
       </div>
@@ -99,7 +151,7 @@ export default function ProfileForm() {
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
           >
             Nome
           </label>
@@ -108,7 +160,7 @@ export default function ProfileForm() {
               id="name"
               type="text"
               {...register('name')}
-              className="w-full px-4 py-2 pl-10 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-4 py-2 pl-10 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg
@@ -135,7 +187,7 @@ export default function ProfileForm() {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
           >
             Email
           </label>
@@ -144,7 +196,7 @@ export default function ProfileForm() {
               id="email"
               type="email"
               {...register('email')}
-              className="w-full px-4 py-2 pl-10 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-4 py-2 pl-10 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg
@@ -168,8 +220,8 @@ export default function ProfileForm() {
           )}
         </div>
 
-        <div className="pt-4 mt-4 border-t border-gray-200">
-          <h3 className="text-lg font-medium text-gray-800 mb-3 flex items-center">
+        <div className="pt-4 mt-4 border-t border-gray-200 dark:border-gray-700">
+          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3 flex items-center">
             <svg
               className="w-5 h-5 text-blue-500 mr-2"
               fill="none"
@@ -186,14 +238,14 @@ export default function ProfileForm() {
             </svg>
             Alteração de Senha
           </h3>
-          <p className="text-sm text-gray-500 mb-4 bg-blue-50 p-3 rounded-md border-l-4 border-blue-300">
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 bg-blue-50 dark:bg-blue-900 p-3 rounded-md border-l-4 border-blue-300 dark:border-blue-700">
             Deixe os campos em branco caso não deseje alterar sua senha atual
           </p>
 
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
             >
               Nova Senha
             </label>
@@ -202,7 +254,7 @@ export default function ProfileForm() {
                 id="password"
                 type="password"
                 {...register('password')}
-                className="w-full px-4 py-2 pl-10 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-2 pl-10 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="••••••••"
               />
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -232,7 +284,7 @@ export default function ProfileForm() {
           <div className="mt-4">
             <label
               htmlFor="confirmPassword"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
             >
               Confirme a Nova Senha
             </label>
@@ -241,7 +293,7 @@ export default function ProfileForm() {
                 id="confirmPassword"
                 type="password"
                 {...register('confirmPassword')}
-                className="w-full px-4 py-2 pl-10 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-2 pl-10 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="••••••••"
               />
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
