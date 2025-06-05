@@ -142,8 +142,14 @@ export default function SavedContentPage() {
   const handleRemoveSavedContent = async (id: string) => {
     try {
       const response = await fetchWithAuth(
-        `${process.env.NEXT_PUBLIC_API_URL}/saved-content/${id}`,
-        { method: 'DELETE' }
+        `${process.env.NEXT_PUBLIC_API_URL}/saved-content/remove`,
+        {
+          method: 'DELETE',
+          body: JSON.stringify({ contentId: id }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
       );
 
       if (!response.ok) {
@@ -175,6 +181,8 @@ export default function SavedContentPage() {
 
     return matchesSearch && matchesType;
   });
+
+  console.log(filteredContents);
 
   // Get unique content types for filtering
   const contentTypes = Array.from(
@@ -328,7 +336,7 @@ export default function SavedContentPage() {
                   )}
                   <div className="absolute top-2 right-2">
                     <button
-                      onClick={() => handleRemoveSavedContent(item.id)}
+                      onClick={() => handleRemoveSavedContent(item.contentId)}
                       className="bg-white dark:bg-gray-900 p-2 rounded-full shadow-md hover:bg-red-50 dark:hover:bg-red-950 transition-colors"
                       title="Remover dos favoritos"
                     >
