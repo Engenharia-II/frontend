@@ -182,8 +182,6 @@ export default function SavedContentPage() {
     return matchesSearch && matchesType;
   });
 
-  console.log(filteredContents);
-
   // Get unique content types for filtering
   const contentTypes = Array.from(
     new Set(savedContents.map((item) => item.content?.type).filter(Boolean))
