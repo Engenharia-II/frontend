@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CaminhoDev - Frontend
 
-## Getting Started
+Bem-vindo ao repositório do frontend do **CaminhoDev**, uma plataforma educacional projetada para guiar estudantes de Ciência da Computação em sua jornada de aprendizado. O objetivo é fornecer um ambiente estruturado e rico em recursos para o domínio de diversas áreas da computação.
 
-First, run the development server:
+## 🚀 Sobre o Projeto
+
+O CaminhoDev é uma aplicação web que oferece aos usuários:
+
+-   **Trilhas de Aprendizado:** Disciplinas e tópicos organizados de forma lógica para facilitar o estudo.
+-   **Acompanhamento de Progresso:** Ferramentas para que os usuários monitorem seu avanço em cada disciplina.
+-   **Conteúdo Curado:** Acesso a uma variedade de materiais de estudo, como vídeos, artigos, livros e podcasts.
+-   **Funcionalidade de Conteúdo Salvo:** Permite que os usuários guardem seus materiais preferidos para acesso rápido.
+-   **Dashboard Personalizado:** Uma visão geral das estatísticas de aprendizado, progressos e recomendações.
+
+## ✨ Tecnologias Utilizadas
+
+Este projeto foi construído utilizando um conjunto de tecnologias modernas para garantir uma experiência de usuário rápida, responsiva e escalável.
+
+-   **Framework:** [Next.js](https://nextjs.org/) (React)
+-   **Linguagem:** [TypeScript](https://www.typescriptlang.org/)
+-   **Estilização:** [Tailwind CSS](https://tailwindcss.com/) com [shadcn/ui](https://ui.shadcn.com/) para componentes.
+-   **Gerenciamento de Formulários:** [React Hook Form](https://react-hook-form.com/) com [Zod](https://zod.dev/) para validação de schemas.
+-   **Qualidade de Código:**
+    -   [ESLint](https://eslint.org/) para análise estática de código.
+    -   [Prettier](https://prettier.io/) para formatação de código.
+    -   [Husky](https://typicode.github.io/husky/) e [lint-staged](https://github.com/okonet/lint-staged) para garantir a qualidade do código antes dos commits.
+-   **Conteinerização:** [Docker](https://www.docker.com/) e [Docker Compose](https://docs.docker.com/compose/) para um ambiente de desenvolvimento consistente.
+
+## 🏁 Como Rodar o Projeto
+
+Para executar o projeto em seu ambiente local, siga os passos abaixo.
+
+### Pré-requisitos
+
+-   [Node.js](https://nodejs.org/) (versão 18 ou superior)
+-   [npm](https://www.npmjs.com/) (ou um gerenciador de pacotes de sua preferência como Yarn, pnpm)
+-   [Docker](https://www.docker.com/products/docker-desktop/) (opcional, para rodar via contêiner)
+
+### 1. Usando NPM (Recomendado)
+
+Primeiro, clone o repositório e instale as dependências:
+
+```bash
+git clone <URL_DO_SEU_REPOSITORIO>
+cd frontend
+npm install
+```
+
+Em seguida, crie um arquivo `.env.local` na raiz do projeto e adicione as variáveis de ambiente necessárias. Um exemplo seria:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3333
+NEXT_PUBLIC_COOKIE_NAME=caminhodev.token
+```
+
+Finalmente, para iniciar o servidor de desenvolvimento, execute:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) em seu navegador para ver a aplicação.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Usando Docker
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Se preferir usar o Docker, certifique-se de que o Docker esteja em execução em sua máquina. Em seguida, execute o comando abaixo na raiz do diretório `frontend`:
 
-## Learn More
+```bash
+docker-compose up --build
+```
 
-To learn more about Next.js, take a look at the following resources:
+O contêiner do frontend estará disponível em [http://localhost:3000](http://localhost:3000).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔧 Comandos Disponíveis
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+-   `npm run dev`: Inicia o servidor de desenvolvimento.
+-   `npm run build`: Compila o projeto para produção.
+-   `npm run start`: Inicia o servidor de produção após a compilação.
+-   `npm run lint`: Executa a verificação de lint em todo o projeto.
 
-## Deploy on Vercel
+## 🤝 Contribuições
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contribuições são sempre bem-vindas! Se você tiver sugestões para melhorar o projeto, sinta-se à vontade para criar um *fork* do repositório e abrir um *pull request*.
