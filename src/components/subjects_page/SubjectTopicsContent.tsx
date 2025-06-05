@@ -49,6 +49,7 @@ export function SubjectTopicsContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isUpdatingStatus, setIsUpdatingStatus] = useState<string | null>(null);
+
   const fetchSubjectDetails = useCallback(async () => {
     if (!subjectId) {
       setError('ID da disciplina não fornecido');
@@ -186,13 +187,16 @@ export function SubjectTopicsContent() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm mt-8">
-          <div className="p-4 border-b">
+        <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm mt-8">
+          <div className="p-4 border-b border-gray-200 dark:border-gray-800">
             <SkeletonBox width="w-40" height="h-6" />
           </div>
 
           {[1, 2, 3, 4].map((_, index) => (
-            <div key={index} className="border-b p-6">
+            <div
+              key={index}
+              className="border-b border-gray-200 dark:border-gray-800 p-6"
+            >
               <div className="flex justify-between items-center">
                 <div className="flex gap-4 items-center">
                   <SkeletonBox
@@ -217,8 +221,8 @@ export function SubjectTopicsContent() {
   if (error) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-          <p className="text-red-500 mb-4">{error}</p>
+        <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-8 text-center border border-black dark:border-gray-700">
+          <p className="text-red-500 dark:text-red-400 mb-4">{error}</p>
           <button
             onClick={fetchSubjectDetails}
             className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
@@ -233,8 +237,10 @@ export function SubjectTopicsContent() {
   if (!subject) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-          <p className="text-gray-500">Disciplina não encontrada</p>
+        <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-8 text-center border border-black dark:border-gray-700">
+          <p className="text-gray-500 dark:text-gray-400">
+            Disciplina não encontrada
+          </p>
           <Link
             href="/app/subjects"
             className="text-blue-600 hover:underline mt-4 inline-block"
@@ -251,31 +257,33 @@ export function SubjectTopicsContent() {
       {/* Backlink */}
       <Link
         href="/app/subjects"
-        className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-6"
+        className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-6"
       >
         <FaArrowLeft className="text-sm" />
         <span>Voltar para disciplinas</span>
       </Link>
 
       {/* Subject Header */}
-      <div className="bg-white shadow-sm rounded-lg p-6 mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+      <div className="bg-white dark:bg-gray-900 shadow-sm rounded-lg p-6 mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
           {subject.name}
         </h1>
-        <p className="text-gray-600 mb-6">{subject.description}</p>
+        <p className="text-gray-600 dark:text-gray-400 mb-6">
+          {subject.description}
+        </p>
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mt-4">
-          <div className="flex items-center gap-2 text-gray-700">
-            <IoMdTime className="text-lg text-gray-600" />
+          <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+            <IoMdTime className="text-lg text-gray-600 dark:text-gray-300" />
             <span>{formatDuration(subject.subjectDuration)}</span>
           </div>
 
-          <div className="flex items-center gap-2 text-gray-700">
-            <FaFile className="text-gray-600" />
+          <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+            <FaFile className="text-gray-600 dark:text-gray-300" />
             <span>{subject.totalTopics} tópicos</span>
           </div>
 
-          <div className="flex items-center gap-2 text-gray-700">
+          <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
             <FaCheckCircle className="text-green-600" />
             <span>
               {subject.completedTopics}
@@ -289,12 +297,12 @@ export function SubjectTopicsContent() {
         {/* Progress bar */}
         <div className="mt-6">
           <div className="flex justify-between mb-1 text-sm">
-            <span className="text-gray-600">Progresso</span>
-            <span className="font-medium">
+            <span className="text-gray-600 dark:text-gray-400">Progresso</span>
+            <span className="font-medium text-gray-900 dark:text-gray-100">
               {Math.round(subject.subjectProgress * 100)}%
             </span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2.5">
+          <div className="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-2.5">
             <div
               className="bg-green-600 h-2.5 rounded-full"
               style={{ width: `${Math.round(subject.subjectProgress * 100)}%` }}
@@ -304,14 +312,16 @@ export function SubjectTopicsContent() {
       </div>
 
       {/* Topics List */}
-      <div className="bg-white rounded-lg shadow-sm">
-        <div className="p-4 border-b bg-gray-50">
-          <h2 className="font-medium text-gray-800">Conteúdo da Disciplina</h2>
+      <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-black dark:border-gray-700">
+        <div className="p-4 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800">
+          <h2 className="font-medium text-gray-800 dark:text-gray-100">
+            Conteúdo da Disciplina
+          </h2>
         </div>
 
         {subject.topics.length === 0 ? (
           <div className="p-8 text-center">
-            <p className="text-gray-500">
+            <p className="text-gray-500 dark:text-gray-400">
               Nenhum tópico disponível para esta disciplina.
             </p>
           </div>
@@ -320,7 +330,7 @@ export function SubjectTopicsContent() {
             {subject.topics.map((topic, index) => (
               <div
                 key={topic.id}
-                className={`border-b p-6 ${index % 2 === 1 ? 'bg-gray-50' : ''}`}
+                className={`border-b border-gray-200 dark:border-gray-800 p-6 ${index % 2 === 1 ? 'bg-gray-50 dark:bg-gray-900/60' : ''}`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   <div className="flex gap-4 items-start">
@@ -330,13 +340,13 @@ export function SubjectTopicsContent() {
                       {topic.position}
                     </div>
                     <div>
-                      <h3 className="font-medium text-gray-900">
+                      <h3 className="font-medium text-gray-900 dark:text-gray-100">
                         {topic.name}
                       </h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">
                         {topic.description}
                       </p>
-                      <div className="flex items-center gap-6 mt-2 text-sm text-gray-500">
+                      <div className="flex items-center gap-6 mt-2 text-sm text-gray-500 dark:text-gray-400">
                         <div className="flex items-center gap-1">
                           <FaClock className="text-xs" />
                           <span>{formatDuration(topic.duration)}</span>

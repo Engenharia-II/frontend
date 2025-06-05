@@ -3,7 +3,7 @@ import { SubjectTopicsContent } from '@/components/subjects_page/SubjectTopicsCo
 
 export default function Topics() {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex flex-col">
       <Header />
       <main className="flex-grow pb-6">
         <SubjectTopicsContent />

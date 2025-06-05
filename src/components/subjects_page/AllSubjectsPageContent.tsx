@@ -117,8 +117,10 @@ export function AllSubjectsPageContent() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Minhas Disciplinas</h1>
-        <p className="text-gray-600 mt-2">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+          Minhas Disciplinas
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 mt-2">
           Explore todas as disciplinas disponíveis na plataforma
         </p>
       </div>
@@ -137,17 +139,17 @@ export function AllSubjectsPageContent() {
           <input
             type="text"
             placeholder="Buscar disciplinas..."
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
         <div className="flex items-center gap-2">
-          <MdOutlineFilterList className="text-xl text-gray-600" />
+          <MdOutlineFilterList className="text-xl text-gray-600 dark:text-gray-200" />
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:text-gray-100"
           >
             <option value="all">Todos</option>
             <option value="not_started">Não iniciados</option>
@@ -181,8 +183,8 @@ export function AllSubjectsPageContent() {
 
       {/* Error state */}
       {error && !isLoading && (
-        <div className="bg-white rounded-lg shadow-md p-8 text-center">
-          <p className="text-red-500 mb-4">{error}</p>
+        <div className="bg-white dark:bg-gray-900 rounded-lg shadow-md p-8 text-center border border-black dark:border-gray-700">
+          <p className="text-red-500 dark:text-red-400 mb-4">{error}</p>
           <button
             onClick={fetchAllData}
             className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
@@ -194,10 +196,14 @@ export function AllSubjectsPageContent() {
 
       {/* Empty state */}
       {!isLoading && !error && filteredSubjects.length === 0 && (
-        <div className="bg-white rounded-lg shadow-md p-8 text-center">
-          <p className="text-gray-500 mb-2">Nenhuma disciplina encontrada</p>
+        <div className="bg-white dark:bg-gray-900 rounded-lg shadow-md p-8 text-center border border-black dark:border-gray-700">
+          <p className="text-gray-500 dark:text-gray-400 mb-2">
+            Nenhuma disciplina encontrada
+          </p>
           {statusFilter !== 'all' || searchQuery ? (
-            <p className="text-gray-400">Tente mudar os filtros de busca</p>
+            <p className="text-gray-400 dark:text-gray-500">
+              Tente mudar os filtros de busca
+            </p>
           ) : null}
         </div>
       )}
