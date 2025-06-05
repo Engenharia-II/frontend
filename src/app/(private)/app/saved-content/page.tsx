@@ -186,27 +186,29 @@ export default function SavedContentPage() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950 transition-colors">
       <Header />
 
       <main className="flex-1 container mx-auto px-4 py-6">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">Conteúdos Salvos</h1>
-          <span className="text-sm text-gray-500">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            Conteúdos Salvos
+          </h1>
+          <span className="text-sm text-gray-500 dark:text-gray-400">
             {filteredContents.length}{' '}
             {filteredContents.length === 1 ? 'item' : 'itens'}
           </span>
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
+        <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-4 mb-6 border border-black dark:border-gray-700">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
               <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
                 placeholder="Pesquisar conteúdos salvos..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -215,7 +217,7 @@ export default function SavedContentPage() {
               <div className="relative">
                 <FaTag className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <select
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={selectedType}
                   onChange={(e) => setSelectedType(e.target.value)}
                 >
@@ -236,7 +238,7 @@ export default function SavedContentPage() {
             {[...Array(6)].map((_, i) => (
               <div
                 key={i}
-                className="bg-white rounded-lg shadow-sm p-0 border border-gray-200 overflow-hidden"
+                className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-0 border border-gray-200 dark:border-gray-700 overflow-hidden"
               >
                 <div className="relative w-full h-32">
                   <SkeletonBox width="w-full" height="h-full" />
@@ -253,8 +255,8 @@ export default function SavedContentPage() {
             ))}
           </div>
         ) : error ? (
-          <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-            <p className="text-red-500 mb-4">{error}</p>
+          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-8 text-center border border-black dark:border-gray-700">
+            <p className="text-red-500 dark:text-red-400 mb-4">{error}</p>
             <button
               onClick={fetchSavedContents}
               className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
@@ -263,14 +265,14 @@ export default function SavedContentPage() {
             </button>
           </div>
         ) : savedContents.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-sm p-12 text-center">
-            <div className="inline-block p-3 bg-blue-50 rounded-full mb-4">
+          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-12 text-center border border-black dark:border-gray-700">
+            <div className="inline-block p-3 bg-blue-50 dark:bg-blue-900 rounded-full mb-4">
               <FaBookmark className="text-blue-500" size={32} />
             </div>
-            <h2 className="text-xl font-semibold mb-2">
+            <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
               Nenhum conteúdo salvo
             </h2>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
               Você ainda não salvou nenhum conteúdo. Explore disciplinas e
               tópicos para encontrar conteúdos interessantes para salvar.
             </p>
@@ -282,11 +284,11 @@ export default function SavedContentPage() {
             </Link>
           </div>
         ) : filteredContents.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-            <h2 className="text-xl font-semibold mb-2">
+          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-8 text-center border border-black dark:border-gray-700">
+            <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
               Nenhum resultado encontrado
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
               Não encontramos conteúdos salvos que correspondam aos seus
               critérios de pesquisa.
             </p>
@@ -305,9 +307,9 @@ export default function SavedContentPage() {
             {filteredContents.map((item, index) => (
               <div
                 key={item.content?.id || index}
-                className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden group hover:shadow-md transition-shadow"
+                className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden group hover:shadow-md transition-shadow"
               >
-                <div className="relative w-full h-40 bg-gray-100">
+                <div className="relative w-full h-40 bg-gray-100 dark:bg-gray-800">
                   {item.content?.tumbnailUrl ? (
                     <Image
                       src={item.content.tumbnailUrl}
@@ -327,7 +329,7 @@ export default function SavedContentPage() {
                   <div className="absolute top-2 right-2">
                     <button
                       onClick={() => handleRemoveSavedContent(item.id)}
-                      className="bg-white p-2 rounded-full shadow-md hover:bg-red-50 transition-colors"
+                      className="bg-white dark:bg-gray-900 p-2 rounded-full shadow-md hover:bg-red-50 dark:hover:bg-red-950 transition-colors"
                       title="Remover dos favoritos"
                     >
                       <FaTrashAlt className="text-red-500" size={14} />
@@ -336,10 +338,10 @@ export default function SavedContentPage() {
                 </div>
 
                 <div className="p-4">
-                  <h3 className="font-medium text-lg text-gray-900 mb-1 line-clamp-2">
+                  <h3 className="font-medium text-lg text-gray-900 dark:text-gray-100 mb-1 line-clamp-2">
                     {item.content?.name}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-3 line-clamp-2">
                     {item.content?.description}
                   </p>
 
@@ -347,7 +349,7 @@ export default function SavedContentPage() {
                     {item.content?.topic?.subject && (
                       <Link
                         href={`/app/subjects/topics?subjectId=${item.content.topic.subject.id}`}
-                        className="text-xs text-blue-700 hover:underline flex items-center"
+                        className="text-xs text-blue-700 dark:text-blue-400 hover:underline flex items-center"
                       >
                         <FaGraduationCap className="mr-1" />
                         {item.content.topic.subject.name}
@@ -357,7 +359,7 @@ export default function SavedContentPage() {
                     {item.content?.topic && (
                       <Link
                         href={`/app/topics/contents?topicId=${item.content.topic.id}`}
-                        className="text-xs text-green-700 hover:underline flex items-center"
+                        className="text-xs text-green-700 dark:text-green-400 hover:underline flex items-center"
                       >
                         <FaBookmark className="mr-1" />
                         {item.content.topic.name}
@@ -365,8 +367,8 @@ export default function SavedContentPage() {
                     )}
                   </div>
 
-                  <div className="flex justify-between items-center mt-3 pt-3 border-t border-gray-100">
-                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
+                  <div className="flex justify-between items-center mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                    <span className="text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-2 py-1 rounded-full">
                       {item.content?.type}
                     </span>
 
