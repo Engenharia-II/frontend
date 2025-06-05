@@ -3,7 +3,7 @@ import { TopicContentPageContent } from '@/components/topics_page/TopicContentPa
 
 export default function TopicContentsPage() {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors flex flex-col">
       <Header />
       <main className="flex-grow pb-6">
         <TopicContentPageContent />

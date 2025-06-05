@@ -218,7 +218,7 @@ export function TopicContentPageContent() {
           {[1, 2, 3, 4, 5, 6].map((_, i) => (
             <div
               key={i}
-              className="bg-white rounded-lg shadow-sm overflow-hidden"
+              className="bg-white dark:bg-gray-900 rounded-lg shadow-sm overflow-hidden"
             >
               <SkeletonBox width="w-full" height="h-40" />
               <div className="p-4">
@@ -244,12 +244,12 @@ export function TopicContentPageContent() {
   if (error) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-          <p className="text-red-500 mb-4">{error}</p>
+        <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-8 text-center border border-black dark:border-gray-700">
+          <p className="text-red-500 dark:text-red-400 mb-4">{error}</p>
           <div className="flex gap-4 justify-center">
             <button
               onClick={() => router.back()}
-              className="border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors"
+              className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-100 px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
               Voltar
             </button>
@@ -268,8 +268,10 @@ export function TopicContentPageContent() {
   if (!topic) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-          <p className="text-gray-500">Tópico não encontrado</p>
+        <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-8 text-center border border-black dark:border-gray-700">
+          <p className="text-gray-500 dark:text-gray-400">
+            Tópico não encontrado
+          </p>
           <Link
             href="/app/subjects"
             className="text-blue-600 hover:underline mt-4 inline-block"
@@ -286,7 +288,7 @@ export function TopicContentPageContent() {
       {/* Backlink */}
       <Link
         href={`/app/subjects/topics?subjectId=${topic.subjectId}`}
-        className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-6"
+        className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-6"
       >
         <FaArrowLeft className="text-sm" />
         <span>Voltar para tópicos</span>
@@ -294,15 +296,19 @@ export function TopicContentPageContent() {
 
       {/* Topic Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">{topic.name}</h1>
-        <p className="text-gray-600 mb-4">{topic.description}</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+          {topic.name}
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 mb-4">
+          {topic.description}
+        </p>
 
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-          <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
+        <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+          <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
             {contents.length} {contents.length === 1 ? 'conteúdo' : 'conteúdos'}{' '}
             disponíveis
           </span>
-          <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">
+          <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300 px-3 py-1 rounded-full text-xs font-medium">
             {savedContents.length}{' '}
             {savedContents.length === 1 ? 'conteúdo salvo' : 'conteúdos salvos'}
           </span>
@@ -316,7 +322,7 @@ export function TopicContentPageContent() {
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             activeFilter === 'all'
               ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700'
           }`}
         >
           Todos ({getFilterCount('all')})
@@ -326,7 +332,7 @@ export function TopicContentPageContent() {
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             activeFilter === 'saved'
               ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700'
           }`}
         >
           Salvos ({getFilterCount('saved')})
@@ -336,7 +342,7 @@ export function TopicContentPageContent() {
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             activeFilter === 'video'
               ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700'
           }`}
         >
           Videos ({getFilterCount('video')})
@@ -346,7 +352,7 @@ export function TopicContentPageContent() {
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             activeFilter === 'article'
               ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700'
           }`}
         >
           Artigos ({getFilterCount('article')})
@@ -356,7 +362,7 @@ export function TopicContentPageContent() {
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             activeFilter === 'book'
               ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700'
           }`}
         >
           Livros ({getFilterCount('book')})
@@ -366,7 +372,7 @@ export function TopicContentPageContent() {
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             activeFilter === 'course'
               ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700'
           }`}
         >
           Cursos ({getFilterCount('course')})
@@ -376,7 +382,7 @@ export function TopicContentPageContent() {
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             activeFilter === 'podcast'
               ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700'
           }`}
         >
           Podcasts ({getFilterCount('podcast')})
@@ -385,8 +391,8 @@ export function TopicContentPageContent() {
 
       {/* Content Grid */}
       {filteredContents.length === 0 ? (
-        <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-          <p className="text-gray-500">
+        <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-8 text-center border border-black dark:border-gray-700">
+          <p className="text-gray-500 dark:text-gray-400">
             {activeFilter === 'all'
               ? 'Nenhum conteúdo disponível para este tópico.'
               : activeFilter === 'saved'
@@ -399,9 +405,9 @@ export function TopicContentPageContent() {
           {filteredContents.map((content) => (
             <div
               key={content.id}
-              className="bg-white rounded-lg shadow-sm overflow-hidden h-full flex flex-col"
+              className="bg-white dark:bg-gray-900 rounded-lg shadow-sm overflow-hidden h-full flex flex-col border border-black dark:border-gray-700"
             >
-              <div className="relative h-48 overflow-hidden bg-gray-200">
+              <div className="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-800">
                 {content.tumbnailUrl ? (
                   <Image
                     width={360}
@@ -411,13 +417,13 @@ export function TopicContentPageContent() {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gray-100">
+                  <div className="w-full h-full flex items-center justify-center bg-gray-100 dark:bg-gray-900">
                     <ContentTypeIcon type={content.type} size="large" />
                   </div>
                 )}
                 <div className="absolute top-0 right-0 m-3">
                   <span
-                    className={`px-2 py-1 rounded-md text-xs font-bold uppercase ${content.isFree ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}
+                    className={`px-2 py-1 rounded-md text-xs font-bold uppercase ${content.isFree ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300' : 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-300'}`}
                   >
                     {content.isFree ? 'Grátis' : 'Premium'}
                   </span>
@@ -434,15 +440,15 @@ export function TopicContentPageContent() {
               </div>
 
               <div className="p-4 flex-grow flex flex-col">
-                <h3 className="font-medium text-lg text-gray-900 mb-2">
+                <h3 className="font-medium text-lg text-gray-900 dark:text-gray-100 mb-2">
                   {content.name}
                 </h3>
-                <p className="text-gray-600 text-sm mb-4 flex-grow">
+                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow">
                   {content.description}
                 </p>
 
                 <div className="flex justify-between items-center mt-2">
-                  <div className="flex items-center text-gray-500 text-sm">
+                  <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
                     <IoMdTime className="mr-1" />
                     <span>{formatDuration(content.duration)}</span>
                   </div>
@@ -455,8 +461,8 @@ export function TopicContentPageContent() {
                       disabled={savingContentId === content.id}
                       className={`p-2 rounded-full transition-colors ${
                         content.isSaved
-                          ? 'text-blue-600 hover:text-blue-800 hover:bg-blue-50'
-                          : 'text-gray-400 hover:text-blue-600 hover:bg-gray-100'
+                          ? 'text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900'
+                          : 'text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
                       }`}
                       aria-label={
                         content.isSaved

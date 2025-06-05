@@ -40,17 +40,17 @@ const ContentTypeIcon: FC<ContentTypeIconProps> = ({ type, size }) => {
 function getColorByType(type: ContentType): string {
   switch (type) {
     case 'video':
-      return 'text-red-500';
+      return 'text-red-500 dark:text-red-400';
     case 'book':
-      return 'text-blue-500';
+      return 'text-blue-500 dark:text-blue-400';
     case 'article':
-      return 'text-green-500';
+      return 'text-green-500 dark:text-green-400';
     case 'course':
-      return 'text-purple-500';
+      return 'text-purple-500 dark:text-purple-400';
     case 'podcast':
-      return 'text-orange-500';
+      return 'text-orange-500 dark:text-orange-400';
     default:
-      return 'text-gray-500';
+      return 'text-gray-500 dark:text-gray-400';
   }
 }
 
